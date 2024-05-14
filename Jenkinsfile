@@ -12,14 +12,15 @@ pipeline {
         disableConcurrentBuilds()
     }
     stages {
-        stage ('GET THE VERSION') {
+        stage('Get the version') {
             steps {
                 script {
-                    def packagejson = readjsonfile : 'package.json'
-                    packageVersion= pacagejson.version
-                    echo "application version : $packageVersion"
+                    def packageJson = readJSON file: 'package.json'
+                    packageVersion = packageJson.version
+                    echo "application version: $packageVersion"
                 }
             }
         }
-    }
+        }
+    
 }
